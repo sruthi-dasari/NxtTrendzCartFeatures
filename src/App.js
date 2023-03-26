@@ -36,14 +36,22 @@ class App extends Component {
 
   incrementCartItemQuantity = id => {
     const {cartList} = this.state
-    const item = cartList.find(eachItem => eachItem.id === id)
+
+    const newItem = cartList.map(eachItem => {
+      if (eachItem.id === id) {
+        return {...eachItem, quantity: eachItem.quantity + 1}
+      }
+      return null
+    })
+    console.log(newItem)
+    this.setState({cartList: {...cartList, newItem}})
   }
 
   //   decrementCartItemQuantity = id => {}
 
   render() {
     const {cartList} = this.state
-
+    console.log(cartList)
     return (
       <CartContext.Provider
         value={{
