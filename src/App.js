@@ -24,9 +24,15 @@ class App extends Component {
   }
 
   addCartItem = product => {
-    this.setState(prevState => ({cartList: [...prevState.cartList, product]}))
-    //   TODO: Update the code here to implement addCartItem
+    const {cartList} = this.state
+    const reqItem = cartList.find(eachItem => eachItem.id === product.id)
+    if (reqItem) {
+      this.incrementCartItemQuantity(product.id)
+    } else {
+      this.setState(prevState => ({cartList: [...prevState.cartList, product]}))
+    }
   }
+  //   TODO: Update the code here to implement addCartItem
 
   removeCartItem = id => {
     const {cartList} = this.state
@@ -37,21 +43,38 @@ class App extends Component {
   incrementCartItemQuantity = id => {
     const {cartList} = this.state
 
-    const newItem = cartList.map(eachItem => {
+    const newCartList = cartList.map(eachItem => {
       if (eachItem.id === id) {
         return {...eachItem, quantity: eachItem.quantity + 1}
       }
-      return null
+      return eachItem
     })
-    console.log(newItem)
-    this.setState({cartList: {...cartList, newItem}})
+
+    this.setState({cartList: newCartList})
   }
 
-  //   decrementCartItemQuantity = id => {}
+  decrementCartItemQuantity = id => {
+    const {cartList} = this.state
+
+    const reqItem = cartList.find(eachItem => eachItem.id === id)
+    if (reqItem.quantity === 1) {
+      this.removeCartItem(id)
+    } else {
+      const newCartList = cartList.map(eachItem => {
+        if (eachItem.id === id) {
+          return {...eachItem, quantity: eachItem.quantity - 1}
+        }
+        return eachItem
+      })
+      this.setState({cartList: newCartList})
+    }
+
+    // console.log(newCartList)
+  }
 
   render() {
     const {cartList} = this.state
-    console.log(cartList)
+    // console.log(cartList)
     return (
       <CartContext.Provider
         value={{
