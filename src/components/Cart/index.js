@@ -12,6 +12,11 @@ const Cart = () => (
       const {cartList, removeAllCartItems} = value
       const showEmptyView = cartList.length === 0
       const cartCount = cartList.length
+      const totalAmtsList = cartList.map(
+        eachItem => eachItem.price * eachItem.quantity,
+      )
+      const reducer = (accumulator, currentValue) => accumulator + currentValue
+      const totalAmt = totalAmtsList.reduce(reducer, 0)
 
       // TODO: Update the functionality to remove all the items in the cart
 
@@ -40,7 +45,7 @@ const Cart = () => (
                 <div className="cart-summary-container">
                   <h1 className="cart-summary-heading">
                     Order Total:
-                    <span className="cart-summary-span"> Rs {}/-</span>
+                    <span className="cart-summary-span"> Rs {totalAmt}/-</span>
                   </h1>
                   <p className="cart-summary-para">{cartCount} Items in cart</p>
                 </div>
