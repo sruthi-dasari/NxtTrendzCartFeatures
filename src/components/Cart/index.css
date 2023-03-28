@@ -46,34 +46,3 @@
   font-size: 16px;
   font-weight: 700;
 }
-
-.cart-summary-container {
-  align-self: flex-end;
-}
-
-.cart-summary-heading {
-  color: #616e7c;
-  font-family: 'Roboto';
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.cart-summary-span {
-  color: #171f46;
-}
-
-.cart-summary-para {
-  color: #616e7c;
-  font-family: 'Roboto';
-  font-size: 14px;
-}
-
-.checkout-btn {
-  background-color: #0b69ff;
-  color: #ffffff;
-  font-family: 'Roboto';
-  border: none;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 5px;
-}
