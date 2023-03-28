@@ -4,6 +4,8 @@ import CartListView from '../CartListView'
 import CartContext from '../../context/CartContext'
 import EmptyCartView from '../EmptyCartView'
 
+import CartSummary from '../CartSummary'
+
 import './index.css'
 
 const Cart = () => (
@@ -42,16 +44,8 @@ const Cart = () => (
                   Remove All
                 </button>
                 <CartListView />
-                <div className="cart-summary-container">
-                  <h1 className="cart-summary-heading">
-                    Order Total:
-                    <span className="cart-summary-span"> Rs {totalAmt}/-</span>
-                  </h1>
-                  <p className="cart-summary-para">{cartCount} Items in cart</p>
-                </div>
-                <button type="button" className="checkout-btn">
-                  Checkout
-                </button>
+                <CartSummary cartCount={cartCount} totalAmt={totalAmt} />
+
                 {/* TODO: Add your code for Cart Summary here */}
               </div>
             )}
