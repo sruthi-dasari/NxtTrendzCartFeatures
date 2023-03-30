@@ -45,6 +45,9 @@ const Cart = () => (
                 </button>
                 <CartListView />
                 <CartSummary cartCount={cartCount} totalAmt={totalAmt} />
+                {/* {cartCount ? (
+                  <CartSummary cartCount={cartCount} totalAmt={totalAmt} />
+                ) : null} */}
 
                 {/* TODO: Add your code for Cart Summary here */}
               </div>
