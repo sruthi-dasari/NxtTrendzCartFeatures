@@ -39,15 +39,14 @@ const Cart = () => (
                   type="button"
                   className="remove-all-btn"
                   onClick={onClickRemoveAll}
-                  data-testid="remove"
                 >
                   Remove All
                 </button>
                 <CartListView />
-                <CartSummary cartCount={cartCount} totalAmt={totalAmt} />
-                {/* {cartCount ? (
+                {/* <CartSummary cartCount={cartCount} totalAmt={totalAmt} /> */}
+                {cartCount ? (
                   <CartSummary cartCount={cartCount} totalAmt={totalAmt} />
-                ) : null} */}
+                ) : null}
 
                 {/* TODO: Add your code for Cart Summary here */}
               </div>
