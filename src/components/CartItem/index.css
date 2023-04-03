@@ -138,15 +138,16 @@
 }
 
 .delete-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-left: 32px;
+  display: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 768px) {
   .delete-button {
-    display: none;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 32px;
   }
 }
