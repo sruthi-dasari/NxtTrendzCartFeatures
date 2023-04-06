@@ -23,23 +23,6 @@ class App extends Component {
     this.setState({cartList: []})
   }
 
-  addCartItem = product => {
-    const {cartList} = this.state
-    const reqItem = cartList.find(eachItem => eachItem.id === product.id)
-    if (reqItem) {
-      this.incrementCartItemQuantity(product.id)
-    } else {
-      this.setState(prevState => ({cartList: [...prevState.cartList, product]}))
-    }
-  }
-  //   TODO: Update the code here to implement addCartItem
-
-  removeCartItem = id => {
-    const {cartList} = this.state
-    const updatedCartList = cartList.filter(eachItem => eachItem.id !== id)
-    this.setState({cartList: updatedCartList})
-  }
-
   incrementCartItemQuantity = id => {
     const {cartList} = this.state
 
@@ -51,6 +34,46 @@ class App extends Component {
     })
 
     this.setState({cartList: newCartList})
+  }
+
+  addCartItem = product => {
+    const {cartList} = this.state
+
+    if (cartList.length !== 0) {
+      const reqItem = cartList.find(eachItem => eachItem.id === product.id)
+      if (reqItem) {
+        if (product.quantity > 1) {
+          const newCartList = cartList.map(eachItem => {
+            if (eachItem.id === product.id) {
+              return {
+                ...eachItem,
+                quantity: eachItem.quantity + product.quantity,
+              }
+            }
+            return eachItem
+          })
+          this.setState({cartList: newCartList})
+        } else if (product.quantity === 1) {
+          this.incrementCartItemQuantity(product.id)
+        }
+      } else {
+        this.setState(prevState => ({
+          cartList: [...prevState.cartList, product],
+        }))
+      }
+    } else {
+      //   console.log(product)
+      this.setState(prevState => ({
+        cartList: [...prevState.cartList, product],
+      }))
+    }
+  }
+  //   TODO: Update the code here to implement addCartItem
+
+  removeCartItem = id => {
+    const {cartList} = this.state
+    const updatedCartList = cartList.filter(eachItem => eachItem.id !== id)
+    this.setState({cartList: updatedCartList})
   }
 
   decrementCartItemQuantity = id => {
