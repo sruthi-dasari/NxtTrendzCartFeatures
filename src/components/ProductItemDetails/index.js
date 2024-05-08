@@ -161,6 +161,7 @@ class ProductItemDetails extends Component {
                 <div className="quantity-container">
                   <button
                     type="button"
+                    aria-label="minus button"
                     className="quantity-controller-button"
                     onClick={this.onDecrementQuantity}
                     data-testid="minus"
@@ -170,6 +171,7 @@ class ProductItemDetails extends Component {
                   <p className="quantity">{quantity}</p>
                   <button
                     type="button"
+                    aria-label="plus button"
                     className="quantity-controller-button"
                     onClick={this.onIncrementQuantity}
                     data-testid="plus"
